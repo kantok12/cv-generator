@@ -1,4 +1,5 @@
 import { state } from '../state/store.js';
+import { saveDraft } from './draft.js';
 
 export function togglePreview() {
   const formSection = document.getElementById('formSection');
@@ -38,7 +39,8 @@ export function showPreview() {
   updatePreview();
 }
 
-export function updatePreview() {
+export function updatePreview(options = {}) {
+  const { persist = true } = options;
   const form = document.getElementById('cvForm');
   if (!form) return;
 
@@ -213,4 +215,8 @@ export function updatePreview() {
     </section>
     ` : ''}
   `;
+
+  if (persist) {
+    saveDraft();
+  }
 }

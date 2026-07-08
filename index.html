@@ -93,7 +93,7 @@
                     </div>
                     <div class="flex-1 space-y-2">
                       <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Foto de Perfil</label>
-                      <input type="file" id="profilePhoto" accept="image/*" required class="w-full px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 text-sm bg-white dark:bg-slate-700 text-blue-900 dark:text-white">
+                      <input type="file" id="profilePhoto" accept="image/png,image/jpeg" required class="w-full px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 text-sm bg-white dark:bg-slate-700 text-blue-900 dark:text-white">
                       <p class="text-xs text-blue-400 dark:text-blue-300">Formatos: JPG, PNG. Tamaño recomendado: 300x400px</p>
                       <button type="button" id="removePhotoBtn" class="hidden text-sm text-rose-500 hover:text-rose-600">Eliminar foto</button>
                     </div>
@@ -244,6 +244,9 @@
 
             <!-- Action Buttons -->
             <div class="flex flex-col sm:flex-row gap-3 pt-4 sm:pt-6 border-t border-blue-200 dark:border-slate-700 mt-4 sm:mt-6 transition-colors duration-300">
+              <button type="button" id="autoFillBtn" class="flex-1 py-2.5 px-4 bg-amber-600 dark:bg-amber-500 hover:bg-amber-700 dark:hover:bg-amber-600 text-white rounded-md font-medium transition-colors duration-300">
+                Autorrellenar CV
+              </button>
               <button type="button" id="previewBtn" class="flex-1 py-2.5 px-4 bg-green-700 dark:bg-green-600 hover:bg-green-800 dark:hover:bg-green-700 text-white rounded-md font-medium transition-colors duration-300">
                 Vista Previa
               </button>

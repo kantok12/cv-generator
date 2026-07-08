@@ -173,7 +173,8 @@ async function performPDFGeneration() {
 
     // Foto a la derecha
     try {
-      pdf.addImage(imgData, 'JPEG', imgX, yPos, imgWidth, imgHeight);
+      const imageFormat = String(imgData).startsWith('data:image/png') ? 'PNG' : 'JPEG';
+      pdf.addImage(imgData, imageFormat, imgX, yPos, imgWidth, imgHeight);
     } catch (e) {
       console.log('Error loading image:', e);
     }

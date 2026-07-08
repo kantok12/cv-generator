@@ -3,6 +3,7 @@ import { addEducation } from './education.js';
 import { addLanguage } from './languages.js';
 import { addExperience } from './experience.js';
 import { updatePreview } from './preview.js';
+import { clearSavedDraft } from './draft.js';
 
 export function clearForm() {
   // Limpiar todos los inputs y textareas
@@ -59,5 +60,6 @@ export function clearForm() {
   addExperience();
 
   // Actualizar vista previa
-  updatePreview();
+  clearSavedDraft();
+  updatePreview({ persist: false });
 }

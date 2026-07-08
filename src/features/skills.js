@@ -1,7 +1,7 @@
 import { state } from '../state/store.js';
 import { updatePreview } from './preview.js';
 
-function renderSkills(type) {
+export function renderSkills(type) {
   const containerId = type === 'tech' ? 'techSkills' : 'softSkills';
   const container = document.getElementById(containerId);
   if (!container) return;

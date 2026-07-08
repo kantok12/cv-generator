@@ -8,6 +8,10 @@ import { togglePreview, showPreview, updatePreview } from '../features/preview.j
 import { generatePDF } from '../features/pdf.js';
 import { showPreviewModal, showClearFormModal } from '../features/modals.js';
 import { clearForm } from '../features/clearForm.js';
+import { autoFillFromProfilePdf } from '../features/autofill.js';
+import { loadSavedDraft } from '../features/draft.js';
+
+let appInitialized = false;
 
 function initDefaultData() {
   addEducation();
@@ -33,19 +37,33 @@ function initStaticListeners() {
 
   document.getElementById('downloadBtn')?.addEventListener('click', generatePDF);
 
+  document.getElementById('autoFillBtn')?.addEventListener('click', autoFillFromProfilePdf);
+
   document.getElementById('clearBtn')?.addEventListener('click', () => {
     showClearFormModal(clearForm);
   });
 }
 
 export function initApp() {
+  if (appInitialized) return;
+  appInitialized = true;
+
   initThemeToggle();
   initTabs();
-  initDefaultData();
+  const restored = loadSavedDraft();
+  if (!restored) {
+    initDefaultData();
+  }
   initStaticListeners();
   initSkills();
   initEducation();
   initLanguages();
   initExperience();
-  updatePreview();
+  updatePreview({ persist: false });
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp, { once: true });
+} else {
+  initApp();
 }
