@@ -31,17 +31,17 @@ function syncPhotoPreview() {
   if (state.profilePhoto) {
     if (previewImg) {
       previewImg.src = state.profilePhoto;
-      previewImg.classList.remove('hidden');
+      previewImg.classList.remove('d-none');
     }
-    placeholder?.classList.add('hidden');
-    removeBtn?.classList.remove('hidden');
+    placeholder?.classList.add('d-none');
+    removeBtn?.classList.remove('d-none');
   } else {
     if (previewImg) {
       previewImg.src = '';
-      previewImg.classList.add('hidden');
+      previewImg.classList.add('d-none');
     }
-    placeholder?.classList.remove('hidden');
-    removeBtn?.classList.add('hidden');
+    placeholder?.classList.remove('d-none');
+    removeBtn?.classList.add('d-none');
   }
 }
 

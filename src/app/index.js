@@ -27,6 +27,7 @@ function initStaticListeners() {
   });
 
   document.getElementById('togglePreview')?.addEventListener('click', togglePreview);
+  document.getElementById('togglePreviewCloseBtn')?.addEventListener('click', togglePreview);
 
   const photoInput = document.getElementById('profilePhoto');
   photoInput?.addEventListener('change', handlePhotoUpload);

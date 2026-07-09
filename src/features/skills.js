@@ -7,15 +7,15 @@ export function renderSkills(type) {
   if (!container) return;
 
   const skills = type === 'tech' ? state.technicalSkills : state.softSkills;
-  const bgColor = type === 'tech' ? 'bg-slate-100 text-slate-700' : 'bg-rose-50 text-rose-700';
+  const badgeClass = type === 'tech' ? 'text-bg-primary-subtle text-primary border' : 'text-bg-danger-subtle text-danger border';
 
   container.innerHTML = skills
     .map(
       (skill, index) => `
-    <span class="${bgColor} px-3 py-1.5 text-sm rounded-full flex items-center gap-1">
+    <span class="badge rounded-pill ${badgeClass} d-inline-flex align-items-center gap-2 px-3 py-2">
       ${skill}
-      <button type="button" data-action="remove-skill" data-skill-type="${type}" data-skill-index="${index}" class="hover:text-rose-500">
-        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      <button type="button" data-action="remove-skill" data-skill-type="${type}" data-skill-index="${index}" class="btn btn-sm btn-link p-0 text-decoration-none text-reset">
+        <span aria-hidden="true">&times;</span>
       </button>
     </span>
   `

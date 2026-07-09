@@ -17,61 +17,59 @@ export function addExperience() {
   if (!container) return;
 
   const div = document.createElement('div');
-  div.className = 'p-4 bg-white dark:bg-slate-700 rounded-lg border border-blue-100 dark:border-slate-600 space-y-4';
+  div.className = 'card border-secondary-subtle';
   div.dataset.index = String(index);
   div.innerHTML = `
-    <div class="flex justify-between items-center">
-      <span class="text-sm font-medium text-blue-500 dark:text-blue-400">Experiencia #${index + 1}</span>
-      ${index > 0 ? `<button type="button" data-action="remove-experience" data-index="${index}" class="text-rose-500 hover:text-rose-600 text-sm">Eliminar</button>` : ''}
+    <div class="card-header bg-body-tertiary d-flex justify-content-between align-items-center">
+      <span class="small fw-semibold text-primary">Experiencia #${index + 1}</span>
+      ${index > 0 ? `<button type="button" data-action="remove-experience" data-index="${index}" class="btn btn-sm btn-outline-danger">Eliminar</button>` : ''}
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="space-y-2">
-        <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Cargo *</label>
-        <input type="text" name="exp-role-${index}" placeholder="Ej: Desarrollador Full Stack" class="w-full px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white" data-action="exp-input" data-index="${index}" data-field="role">
-      </div>
-      <div class="space-y-2">
-        <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Empresa *</label>
-        <input type="text" name="exp-company-${index}" placeholder="Ej: Tech Solutions S.A." class="w-full px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white" data-action="exp-input" data-index="${index}" data-field="company">
-      </div>
-      <div class="space-y-2 md:col-span-2">
-        <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Período *</label>
-        <input type="text" name="exp-period-${index}" placeholder="Ej: Enero 2021 - Presente" class="w-full px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white" data-action="exp-input" data-index="${index}" data-field="period">
-      </div>
-      <div class="space-y-2 md:col-span-2">
-        <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Descripción *</label>
-        <textarea name="exp-desc-${index}" rows="3" placeholder="Describe tus responsabilidades..." class="w-full px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white resize-none" data-action="exp-input" data-index="${index}" data-field="description"></textarea>
-      </div>
-    </div>
-    <div class="space-y-2">
-      <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Logros Clave</label>
-      <div class="flex flex-col sm:flex-row gap-2">
-        <input type="text" id="exp-achievement-${index}" placeholder="Ej: Incrementé eficiencia 30%" class="flex-1 px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white" data-action="exp-array-input" data-exp-index="${index}" data-field="keyAchievements">
-        <button type="button" data-action="add-exp-item" data-exp-index="${index}" data-field="keyAchievements" data-input-id="exp-achievement-${index}" class="px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md hover:bg-blue-50 dark:hover:bg-slate-600 flex-shrink-0">
-          <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-        </button>
-      </div>
-      <div id="exp-achievements-${index}" class="flex flex-wrap gap-2"></div>
-    </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="space-y-2">
-        <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Tech Stack</label>
-        <div class="flex flex-col sm:flex-row gap-2">
-          <input type="text" id="exp-tech-${index}" placeholder="Ej: React, Node.js..." class="flex-1 px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white" data-action="exp-array-input" data-exp-index="${index}" data-field="techStack">
-          <button type="button" data-action="add-exp-item" data-exp-index="${index}" data-field="techStack" data-input-id="exp-tech-${index}" class="px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md hover:bg-blue-50 dark:hover:bg-slate-600 flex-shrink-0">
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-          </button>
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Cargo *</label>
+          <input type="text" name="exp-role-${index}" placeholder="Ej: Desarrollador Full Stack" class="form-control" data-action="exp-input" data-index="${index}" data-field="role">
         </div>
-        <div id="exp-tech-list-${index}" class="flex flex-wrap gap-2"></div>
-      </div>
-      <div class="space-y-2">
-        <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Herramientas</label>
-        <div class="flex flex-col sm:flex-row gap-2">
-          <input type="text" id="exp-tools-${index}" placeholder="Ej: Git, Docker..." class="flex-1 px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white" data-action="exp-array-input" data-exp-index="${index}" data-field="tools">
-          <button type="button" data-action="add-exp-item" data-exp-index="${index}" data-field="tools" data-input-id="exp-tools-${index}" class="px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md hover:bg-blue-50 dark:hover:bg-slate-600 flex-shrink-0">
-            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
-          </button>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Empresa *</label>
+          <input type="text" name="exp-company-${index}" placeholder="Ej: Tech Solutions S.A." class="form-control" data-action="exp-input" data-index="${index}" data-field="company">
         </div>
-        <div id="exp-tools-list-${index}" class="flex flex-wrap gap-2"></div>
+        <div class="col-12">
+          <label class="form-label fw-semibold">Período *</label>
+          <input type="text" name="exp-period-${index}" placeholder="Ej: Enero 2021 - Presente" class="form-control" data-action="exp-input" data-index="${index}" data-field="period">
+        </div>
+        <div class="col-12">
+          <label class="form-label fw-semibold">Descripción *</label>
+          <textarea name="exp-desc-${index}" rows="3" placeholder="Describe tus responsabilidades..." class="form-control" data-action="exp-input" data-index="${index}" data-field="description"></textarea>
+        </div>
+      </div>
+
+      <div class="mt-4">
+        <label class="form-label fw-semibold">Logros Clave</label>
+        <div class="input-group mb-2">
+          <input type="text" id="exp-achievement-${index}" placeholder="Ej: Incrementé eficiencia 30%" class="form-control" data-action="exp-array-input" data-exp-index="${index}" data-field="keyAchievements">
+          <button type="button" data-action="add-exp-item" data-exp-index="${index}" data-field="keyAchievements" data-input-id="exp-achievement-${index}" class="btn btn-outline-primary">+</button>
+        </div>
+        <div id="exp-achievements-${index}" class="d-flex flex-wrap gap-2"></div>
+      </div>
+
+      <div class="row g-3 mt-2">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Tech Stack</label>
+          <div class="input-group mb-2">
+            <input type="text" id="exp-tech-${index}" placeholder="Ej: React, Node.js..." class="form-control" data-action="exp-array-input" data-exp-index="${index}" data-field="techStack">
+            <button type="button" data-action="add-exp-item" data-exp-index="${index}" data-field="techStack" data-input-id="exp-tech-${index}" class="btn btn-outline-primary">+</button>
+          </div>
+          <div id="exp-tech-list-${index}" class="d-flex flex-wrap gap-2"></div>
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Herramientas</label>
+          <div class="input-group mb-2">
+            <input type="text" id="exp-tools-${index}" placeholder="Ej: Git, Docker..." class="form-control" data-action="exp-array-input" data-exp-index="${index}" data-field="tools">
+            <button type="button" data-action="add-exp-item" data-exp-index="${index}" data-field="tools" data-input-id="exp-tools-${index}" class="btn btn-outline-primary">+</button>
+          </div>
+          <div id="exp-tools-list-${index}" class="d-flex flex-wrap gap-2"></div>
+        </div>
       </div>
     </div>
   `;
@@ -157,18 +155,18 @@ export function renderExpArrayItems(expIndex, field, containerPrefix) {
 
   const items = state.experience[expIndex][field];
   const colors = {
-    keyAchievements: 'bg-emerald-50 text-emerald-700',
-    techStack: 'bg-slate-100 text-slate-700',
-    tools: 'bg-stone-100 text-stone-700'
+    keyAchievements: 'text-bg-success-subtle text-success border',
+    techStack: 'text-bg-secondary-subtle text-secondary border',
+    tools: 'text-bg-warning-subtle text-warning border'
   };
 
   container.innerHTML = items
     .map(
       (item, index) => `
-    <span class="${colors[field]} px-3 py-1.5 text-sm rounded-full flex items-center gap-1">
+    <span class="badge rounded-pill ${colors[field]} d-inline-flex align-items-center gap-2 px-3 py-2">
       ${item}
-      <button type="button" data-action="remove-exp-item" data-exp-index="${expIndex}" data-field="${field}" data-item-index="${index}" class="hover:text-rose-500">
-        <svg class="h-3 w-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+      <button type="button" data-action="remove-exp-item" data-exp-index="${expIndex}" data-field="${field}" data-item-index="${index}" class="btn btn-sm btn-link p-0 text-decoration-none text-reset">
+        <span aria-hidden="true">&times;</span>
       </button>
     </span>
   `

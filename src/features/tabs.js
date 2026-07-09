@@ -3,52 +3,38 @@ export function initTabs() {
     btn.addEventListener('click', () => {
       const tab = btn.dataset.tab;
 
-      // Update button states
       document.querySelectorAll('.tab-btn').forEach((b) => {
-        b.classList.remove('bg-white', 'dark:bg-slate-600', 'text-blue-700', 'dark:text-white', 'shadow-sm');
-        b.classList.add('text-blue-600', 'dark:text-blue-200');
+        b.classList.remove('active', 'btn-primary', 'text-white');
+        b.classList.add('btn-outline-primary');
+        b.setAttribute('aria-selected', 'false');
       });
       
-      btn.classList.remove('text-blue-600', 'dark:text-blue-200');
-      btn.classList.add('bg-white', 'dark:bg-slate-600', 'text-blue-700', 'dark:text-white', 'shadow-sm');
+      btn.classList.remove('btn-outline-primary');
+      btn.classList.add('active', 'btn-primary', 'text-white');
+      btn.setAttribute('aria-selected', 'true');
 
-      // Update content visibility
       document.querySelectorAll('.tab-content').forEach((content) => {
-        content.classList.add('hidden');
+        content.classList.add('d-none');
       });
-      document.getElementById(`tab-${tab}`)?.classList.remove('hidden');
+      document.getElementById(`tab-${tab}`)?.classList.remove('d-none');
     });
   });
 }
 
 export function initThemeToggle() {
-  // Load saved theme
   const savedTheme = localStorage.getItem('cv-theme') || 'light';
-  const body = document.body;
-  
-  // Apply theme
-  if (savedTheme === 'dark') {
-    body.classList.add('dark');
-  } else {
-    body.classList.remove('dark');
-  }
-  body.setAttribute('data-theme', savedTheme);
-  
-  // Handle theme toggle
+  const root = document.documentElement;
+  root.setAttribute('data-bs-theme', savedTheme);
+  document.body.setAttribute('data-theme', savedTheme);
+
   const themeToggle = document.getElementById('themeToggle');
   if (themeToggle) {
     themeToggle.addEventListener('click', () => {
-      const isDark = body.classList.contains('dark');
-      
-      if (isDark) {
-        body.classList.remove('dark');
-        body.setAttribute('data-theme', 'light');
-        localStorage.setItem('cv-theme', 'light');
-      } else {
-        body.classList.add('dark');
-        body.setAttribute('data-theme', 'dark');
-        localStorage.setItem('cv-theme', 'dark');
-      }
+      const currentTheme = root.getAttribute('data-bs-theme') || 'light';
+      const nextTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      root.setAttribute('data-bs-theme', nextTheme);
+      document.body.setAttribute('data-theme', nextTheme);
+      localStorage.setItem('cv-theme', nextTheme);
     });
   }
 }

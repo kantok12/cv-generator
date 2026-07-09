@@ -29,16 +29,16 @@ export function clearForm() {
   const removePhotoBtn = document.getElementById('removePhotoBtn');
   
   if (photoPreview) {
-    photoPreview.classList.add('hidden');
+    photoPreview.classList.add('d-none');
     photoPreview.src = '';
   }
   
   if (photoPlaceholder) {
-    photoPlaceholder.classList.remove('hidden');
+    photoPlaceholder.classList.remove('d-none');
   }
   
   if (removePhotoBtn) {
-    removePhotoBtn.classList.add('hidden');
+    removePhotoBtn.classList.add('d-none');
   }
 
   // Limpiar contenedores dinámicos

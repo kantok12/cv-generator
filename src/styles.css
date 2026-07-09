@@ -1,4 +1,15 @@
-@import "tailwindcss";
+html,
+body {
+  min-height: 100%;
+}
+
+body {
+  cursor: default;
+  background:
+    radial-gradient(circle at top left, rgba(13, 110, 253, 0.12), transparent 28%),
+    radial-gradient(circle at top right, rgba(25, 135, 84, 0.12), transparent 24%),
+    linear-gradient(180deg, #f8fafc 0%, #eef2ff 100%);
+}
 
 button,
 [role="button"],
@@ -6,4 +17,28 @@ input[type="button"],
 input[type="submit"],
 input[type="reset"] {
   cursor: pointer;
+}
+
+.letter-spacing-1 {
+  letter-spacing: 0.12em;
+}
+
+.text-white-75 {
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.cv-shell {
+  backdrop-filter: blur(12px);
+}
+
+.cv-hero {
+  background: linear-gradient(135deg, #ffffff 0%, #eef4ff 52%, #edfdfa 100%);
+}
+
+.cv-hero-aside {
+  background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 50%, #0f766e 100%);
+}
+
+.cv-panel-title {
+  letter-spacing: 0.02em;
 }

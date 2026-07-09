@@ -9,29 +9,31 @@ export function addEducation() {
   if (!container) return;
 
   const div = document.createElement('div');
-  div.className = 'p-4 bg-white dark:bg-slate-700 rounded-lg border border-blue-100 dark:border-slate-600 space-y-4';
+  div.className = 'card border-secondary-subtle';
   div.dataset.index = String(index);
   div.innerHTML = `
-    <div class="flex justify-between items-center">
-      <span class="text-sm font-medium text-blue-500 dark:text-blue-400">Educación #${index + 1}</span>
-      ${index > 0 ? `<button type="button" data-action="remove-education" data-index="${index}" class="text-rose-500 hover:text-rose-600 text-sm">Eliminar</button>` : ''}
+    <div class="card-header bg-body-tertiary d-flex justify-content-between align-items-center">
+      <span class="small fw-semibold text-primary">Educación #${index + 1}</span>
+      ${index > 0 ? `<button type="button" data-action="remove-education" data-index="${index}" class="btn btn-sm btn-outline-danger">Eliminar</button>` : ''}
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-      <div class="space-y-2">
-        <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Título / Grado *</label>
-        <input type="text" name="edu-degree-${index}" placeholder="Ej: Licenciatura en Informática" class="w-full px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white" data-action="edu-input" data-index="${index}" data-field="degree">
-      </div>
-      <div class="space-y-2">
-        <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Institución *</label>
-        <input type="text" name="edu-institution-${index}" placeholder="Ej: Universidad Complutense" class="w-full px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white" data-action="edu-input" data-index="${index}" data-field="institution">
-      </div>
-      <div class="space-y-2">
-        <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Ubicación *</label>
-        <input type="text" name="edu-location-${index}" placeholder="Ej: Madrid, España" class="w-full px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white" data-action="edu-input" data-index="${index}" data-field="location">
-      </div>
-      <div class="space-y-2">
-        <label class="text-sm font-medium text-blue-600 dark:text-blue-300">Período *</label>
-        <input type="text" name="edu-period-${index}" placeholder="Ej: 2018 - 2022" class="w-full px-3 py-2 border border-blue-200 dark:border-slate-600 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-300 dark:focus:ring-slate-500 bg-white dark:bg-slate-700 text-blue-900 dark:text-white" data-action="edu-input" data-index="${index}" data-field="period">
+    <div class="card-body">
+      <div class="row g-3">
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Título / Grado *</label>
+          <input type="text" name="edu-degree-${index}" placeholder="Ej: Licenciatura en Informática" class="form-control" data-action="edu-input" data-index="${index}" data-field="degree">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Institución *</label>
+          <input type="text" name="edu-institution-${index}" placeholder="Ej: Universidad Complutense" class="form-control" data-action="edu-input" data-index="${index}" data-field="institution">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Ubicación *</label>
+          <input type="text" name="edu-location-${index}" placeholder="Ej: Madrid, España" class="form-control" data-action="edu-input" data-index="${index}" data-field="location">
+        </div>
+        <div class="col-md-6">
+          <label class="form-label fw-semibold">Período *</label>
+          <input type="text" name="edu-period-${index}" placeholder="Ej: 2018 - 2022" class="form-control" data-action="edu-input" data-index="${index}" data-field="period">
+        </div>
       </div>
     </div>
   `;

@@ -20,10 +20,10 @@ export function handlePhotoUpload(event) {
 
     if (previewImg) {
       previewImg.src = String(state.profilePhoto ?? '');
-      previewImg.classList.remove('hidden');
+      previewImg.classList.remove('d-none');
     }
-    placeholder?.classList.add('hidden');
-    removeBtn?.classList.remove('hidden');
+    placeholder?.classList.add('d-none');
+    removeBtn?.classList.remove('d-none');
 
     updatePreview();
   };
@@ -41,10 +41,10 @@ export function removePhoto() {
   if (fileInput) fileInput.value = '';
   if (previewImg) {
     previewImg.src = '';
-    previewImg.classList.add('hidden');
+    previewImg.classList.add('d-none');
   }
-  placeholder?.classList.remove('hidden');
-  removeBtn?.classList.add('hidden');
+  placeholder?.classList.remove('d-none');
+  removeBtn?.classList.add('d-none');
 
   updatePreview();
 }
